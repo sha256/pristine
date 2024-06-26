@@ -37,6 +37,19 @@ describe('Locale', function() {
 
     });
 
+    it(`should show fa error message`, () => {
+        Pristine.setLocale("fa");
+        let form = document.getElementById("fixture")
+        let input = document.getElementById("input")
+        let pristine = new Pristine(form);
+
+        expect(pristine.validate(input)).toBe(false);
+
+        expect(pristine.getErrors(input).length).toBe(1);
+        expect(pristine.getErrors(input)[0]).toBe("این فیلد اجباری است");
+
+    });
+
     it(`should show custom error message`, () => {
 
         let form = document.getElementById("fixture")
